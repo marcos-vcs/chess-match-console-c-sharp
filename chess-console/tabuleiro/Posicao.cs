@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace chess_console.tabuleiro
 {
-    internal class Posicao
+    class Posicao
     {
         public int Linha { get; set; }
         public int Coluna { get; set; }
