@@ -17,13 +17,13 @@ namespace chess_console
             {
                 for (int j = 0; j < tabuleiro.Colunas; j++)
                 {
-                    if (tabuleiro.peca(i, j) == null)
+                    if (tabuleiro.Peca(i, j) == null)
                     {
                         Console.Write("- ");
                     }
                     else 
                     {
-                        Console.Write(tabuleiro.peca(i, j) + " ");
+                        Console.Write(tabuleiro.Peca(i, j) + " ");
                     }
                 }
                 Console.WriteLine();

@@ -14,9 +14,8 @@ namespace chess_console.tabuleiro
         public int qteMovimentos { get; set; }
         public Tabuleiro tab { get; set; }
 
-        public Peca(Posicao posicao, Tabuleiro tabuleiro, Cor cor)
+        public Peca(Tabuleiro tabuleiro, Cor cor)
         { 
-            this.Posicao = posicao;
             this.tab = tabuleiro;
             this.Cor = cor;
             this.qteMovimentos = 0;
