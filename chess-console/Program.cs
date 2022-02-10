@@ -6,8 +6,12 @@ namespace chess_console
     {
         public static void Main(string[] args)
         {
-            Posicao p1 = new Posicao(3, 4);
-            Console.WriteLine("Posição: " + p1);
+            Tabuleiro tab = new Tabuleiro(8,8);
+
+            Tela.ImprimirTabuleiro(tab);
+
+            Console.ReadLine();
+
         }
     }
 }

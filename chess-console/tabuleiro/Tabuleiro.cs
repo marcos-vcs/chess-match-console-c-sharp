@@ -19,6 +19,11 @@ namespace chess_console.tabuleiro
             Pecas = new Peca[linhas,colunas];
         }
 
+        public Peca peca(int linha, int coluna)
+        {
+            return this.Pecas[linha, coluna];
+        }
+
 
     }
 }
