@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using chess_console.tabuleiro;
 
 namespace chess_console.xadrez
 {
@@ -15,6 +16,11 @@ namespace chess_console.xadrez
         {
             Coluna = coluna;
             Linha = linha;
+        }
+
+        public Posicao ToPosicao()
+        {
+            return new Posicao( 8 - Linha, Coluna - 'a' );
         }
 
         public override string ToString()
