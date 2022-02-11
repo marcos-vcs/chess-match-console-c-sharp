@@ -15,10 +15,15 @@ namespace chess_console.tabuleiro
         public Tabuleiro tab { get; set; }
 
         public Peca(Tabuleiro tabuleiro, Cor cor)
-        { 
+        {
             this.tab = tabuleiro;
             this.Cor = cor;
             this.qteMovimentos = 0;
+        }
+
+        public void IncrementarQteMovimentos()
+        {
+            qteMovimentos++;
         }
 
     }
