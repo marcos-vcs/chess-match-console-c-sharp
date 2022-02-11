@@ -28,5 +28,22 @@ namespace chess_console.tabuleiro
             qteMovimentos++;
         }
 
+        public bool existeMovimentosPossiveis()
+        {
+            bool[,] mat = MovimentosPossiveis();
+            for (int i = 0; i < tab.Linhas; i++) 
+            {
+                for (int j = 0; j < tab.Colunas; j++)
+                {
+                    if (mat[i,j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+
     }
 }
