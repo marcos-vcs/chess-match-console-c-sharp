@@ -43,7 +43,7 @@ namespace chess_console.tabuleiro
                 throw new TabuleiroException("Ja existe uma peca nessa posicao");
             }
 
-            Pecas[pos.Linha, pos.Coluna] = p;
+            Pecas[pos.Linha,pos.Coluna] = p;
             p.Posicao = pos;
         }
 
@@ -54,8 +54,8 @@ namespace chess_console.tabuleiro
                 return null;
             }
 
-            Peca aux = Peca(pos);
-            aux.Posicao = null;
+            Peca? aux = Peca(pos);
+            aux.Posicao = null ;
             Pecas[pos.Linha, pos.Coluna] = null;
             return aux;
         }
