@@ -86,6 +86,18 @@ namespace chess_console.xadrez
 
         }
 
+        public void validarPosicaoDeDestino(Posicao origem, Posicao destino)
+        {
+
+            if (!Tab.Peca(origem).podeMoverPara(destino))
+            {
+                throw new TabuleiroException("Posição de destino inválida!");
+            }
+        
+        }
+
+
+
 
     }
 }
