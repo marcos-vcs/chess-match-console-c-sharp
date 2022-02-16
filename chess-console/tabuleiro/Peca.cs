@@ -28,6 +28,11 @@ namespace chess_console.tabuleiro
             qteMovimentos++;
         }
 
+        public void DecrementarQteMovimentos()
+        {
+            qteMovimentos--;
+        }
+
         public bool existeMovimentosPossiveis()
         {
             bool[,] mat = MovimentosPossiveis();
