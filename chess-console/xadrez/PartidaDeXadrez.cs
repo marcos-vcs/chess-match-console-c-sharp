@@ -73,11 +73,11 @@ namespace chess_console.xadrez
             return false;
         }
 
-        public Peca? ExecutaMovimento(Posicao origem, Posicao destino)
+        public Peca ExecutaMovimento(Posicao origem, Posicao destino)
         {
-            Peca? p = Tab.RetirarPeca(origem);
+            Peca p = Tab.RetirarPeca(origem);
             p.IncrementarQteMovimentos();
-            Peca? pecaCapturada = Tab.RetirarPeca(destino);
+            Peca pecaCapturada = Tab.RetirarPeca(destino);
             Tab.ColocarPeca(p, destino);
             if (pecaCapturada != null)
             {
@@ -100,7 +100,7 @@ namespace chess_console.xadrez
 
         public void RealizaJogada(Posicao origem, Posicao destino)
         {
-            Peca? pecaCapturada = ExecutaMovimento(origem, destino);
+            Peca pecaCapturada = ExecutaMovimento(origem, destino);
 
             if (EstaEmXeque(JogadorAtual))
             {
@@ -117,8 +117,17 @@ namespace chess_console.xadrez
                 xeque = false;
             }
 
-            Turno++;
-            MudaJogador();
+            if (TesteXequeMate(Adversaria(JogadorAtual)))
+            {
+                Terminada = true;
+            }
+            else 
+            {
+                Turno++;
+                MudaJogador();
+            }
+
+       
 
         }
 
@@ -132,6 +141,38 @@ namespace chess_console.xadrez
                 }
             }
             return aux;
+        }
+
+        public bool TesteXequeMate(Cor cor)
+        {
+            if (!EstaEmXeque(cor))
+            {
+                return false;
+            }
+
+            foreach (Peca x in PecasEmJogo(cor))
+            {
+                bool[,] mat = x.MovimentosPossiveis();
+                for (int i = 0; i < Tab.Linhas; i++)
+                {
+                    for (int j = 0; j < Tab.Colunas; j++)
+                    {
+                        if (mat[i,j])
+                        {
+                            Posicao origem = x.Posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = ExecutaMovimento(origem, destino);
+                            bool testeXeque = EstaEmXeque(cor);
+                            DesfazMovimento(origem, destino, pecaCapturada);
+                            if (!testeXeque)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         public HashSet<Peca> PecasEmJogo(Cor cor)
@@ -178,7 +219,7 @@ namespace chess_console.xadrez
 
         private void ColocarPecas()
         {
-
+            /*
             colocarNovaPeca('c', 1, new Torre(Tab, Cor.Branca));
             colocarNovaPeca('c', 2, new Torre(Tab, Cor.Branca));
             colocarNovaPeca('d', 2, new Torre(Tab, Cor.Branca));
@@ -192,6 +233,15 @@ namespace chess_console.xadrez
             colocarNovaPeca('e', 7, new Torre(Tab, Cor.Preta));
             colocarNovaPeca('e', 8, new Torre(Tab, Cor.Preta));
             colocarNovaPeca('d', 8, new Rei(Tab, Cor.Preta));
+            */
+
+            colocarNovaPeca('c', 1, new Torre(Tab, Cor.Branca));
+            colocarNovaPeca('d', 1, new Rei(Tab, Cor.Branca));
+            colocarNovaPeca('h', 7, new Torre(Tab, Cor.Branca));
+
+            colocarNovaPeca('a', 8, new Rei(Tab, Cor.Preta));
+            colocarNovaPeca('b', 8, new Torre(Tab, Cor.Preta));
+
 
         }
 
