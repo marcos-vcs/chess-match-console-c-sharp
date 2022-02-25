@@ -49,7 +49,7 @@ namespace chess_console.tabuleiro
             return false;
         }
 
-        public bool podeMoverPara(Posicao pos)
+        public bool MovimentoPossivel(Posicao pos)
         {
 
             return MovimentosPossiveis()[pos.Linha, pos.Coluna];
